@@ -3,7 +3,7 @@
 # mvn-hello-world-web-app
 Java Hello World web application created using maven-archetype-webapp
 
-## Blog Post Reference
+## Blog Post Referencie
 https://softwaredev3loper.wordpress.com/2016/02/17/from-zero-to-continuous-delivery/
 
 ## Dependancies
