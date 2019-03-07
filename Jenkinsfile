@@ -1,6 +1,6 @@
 pipeline{
 
-agent any
+agent linux
        
        tools{
         jdk 'JAVA_HOME'
@@ -23,12 +23,6 @@ stages {
                   sh "mvn clean install"
               }
        }
-       stage('Deploy'){
-              steps{
-                  sshagent(['RemoteCopy']) {
-                  sh "scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/pipeline-1/target/*.war centos@172.31.124.67:/usr/share/tomcat/webapps/mvn-hello-world.war"
-}
-              }
-       }
+       
        }
 }
