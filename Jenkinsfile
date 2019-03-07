@@ -26,7 +26,7 @@ stages {
        stage('Deploy'){
               steps{
                   sshagent(['RemoteCopy']) {
-                  sh "scp -o StrictHostKeyChecking=no /target/*.war root@172.31.124.67:/usr/share/tomcat/webapps/*"
+                  sh "scp -o StrictHostKeyChecking=no /target/*.war centos@172.31.124.67:/usr/share/tomcat/webapps/*"
 }
               }
        }
