@@ -3,6 +3,7 @@ pipeline{
 agent any
        
        tools{
+        jdk 'JAVA_HOME'
         maven 'M2_HOME'      
        }
 
@@ -15,6 +16,11 @@ stages {
        stage('MavenVersion'){
               steps{
                   sh "mvn --version"
+              }
+       }
+       stage('MavenBuild'){
+              steps{
+                  sh "mvn clean install"
               }
        }
        }
