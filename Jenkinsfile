@@ -8,9 +8,9 @@ stages {
                 git 'https://github.com/kvvmanikanth/webapp-master'
                   }
             }
-       stage('MavenVersio'){
+       stage('MavenVersion'){
               steps{
-                  sh "mvn --version"
+                  sh "echo mani"
               }
        }
        }
