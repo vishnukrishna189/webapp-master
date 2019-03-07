@@ -3,11 +3,10 @@ pipeline{
 agent any
 
 stages {
-       stage('GitCheckOut') {
+       stage('GitClone') {
             steps {
-                sh "echo mani"
+                git 'https://github.com/kvvmanikanth/webapp-master'
                   }
             }
-
        }
 }
