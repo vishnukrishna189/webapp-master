@@ -26,7 +26,7 @@ stages {
        stage('Deploy'){
               steps{
                   sshagent(['RemoteCopy']) {
-                  sh 'scp /var/lib/jenkins/workspace/pipeline-1/target/mvn-hello-world.war root@172.31.124.67:/usr/share/tomcat/webapps/mvn-hello-world.war
+                  sh "scp /var/lib/jenkins/workspace/pipeline-1/target/mvn-hello-world.war root@172.31.124.67:/usr/share/tomcat/webapps/mvn-hello-world.war"
 '
 }
               }
