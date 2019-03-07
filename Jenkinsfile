@@ -1,6 +1,10 @@
 pipeline{
 
 agent any
+       
+       tools{
+        maven 'M2_HOME'      
+       }
 
 stages {
        stage('GitClone') {
@@ -10,7 +14,7 @@ stages {
             }
        stage('MavenVersion'){
               steps{
-                  sh "echo mani"
+                  sh "mvn --version"
               }
        }
        }
