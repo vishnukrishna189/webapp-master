@@ -8,6 +8,7 @@ stages {
                 git branch: 'master'
                 url: 'https://github.com/kvvmanikanth/webapp-master'
                 sh "ls -lat"
+                  }
             }
 
        }
