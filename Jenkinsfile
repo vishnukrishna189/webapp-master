@@ -1,17 +1,17 @@
 pipeline {
     agent { label 'master' }
     stages {
-        stage('Alpine build') {
+        stage('Debian build') {
             agent {
                 docker {
                     label 'master'
-                    image 'maven:3-alpine'
+                    image 'ubuntu:17.0'
                 }
             }
             steps {
                 echo '====== Running in Alpine ======'
                 sh 'cat /etc/os-release'
-                sh 'mvn --version'
+                sh 'java --version'
             }
         }
     }
