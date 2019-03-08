@@ -63,8 +63,7 @@ stages {
 
 
 
-		//Dockerfile Jenknsfile, source code, pom.xml should be in same location. Add jenkinsuser to docker & root 
-                 group, restart jenkins and docker service
+		//Dockerfile Jenknsfile, source code, pom.xml should be in same location. Add jenkinsuser to docker & root group, restart jenkins and docker service
 
 
 		steps{
