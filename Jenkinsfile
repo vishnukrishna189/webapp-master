@@ -33,11 +33,20 @@ stages {
               }
        }
 
-	stage('Publish'){
+	stage('BuildDockerImage'){
 		steps{
 		sh 'sudo docker build -t kvvmanikanth/tomcat:1.0 .'
 	       }
 	}
+	
+	
+	stage('PushToDockerHub'){
+		steps{
+		withDockerRegistry(credentialsId: '447776b0-8d84-42cb-9d27-3cfc6a9c31fe', url: 'https://cloud.docker.com') {
+                 sh "docker push kvvmanikanth/tomcat:1.0"
+                         }
+                     }
+	        }
 
            }
 }
