@@ -35,16 +35,16 @@ stages {
 
 	stage('BuildDockerImage'){
 		steps{
-		sh 'sudo docker build -t kvvmanikanth/tomcat:1.0 .'
+		sh 'sudo docker build -t 172.31.56.227:8083/tomcat:1.0 .'
 	       }
 	}
 	
 	
 	stage('PushToDockerHub'){
 		steps{
-      		withDockerRegistry(credentialsId: 'c1d37db4-25c0-4aa8-bfde-7c29dd7cabcf', url: 'https://index.docker.io/v1/') {
-                sh "docker push kvvmanikanth/tomcat:1.0"
-                        }
+		withDockerRegistry(credentialsId: '8c704737-f614-4dd2-b54f-2effd4d2f19e', url: '172.31.56.227:8083') {
+		sh "docker push 172.31.56.227:8083/tomcat:1.0"
+                                }
 	        }
 	   }
       }
