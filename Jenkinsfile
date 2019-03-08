@@ -62,7 +62,7 @@ stages {
 		sh 'sudo docker build -t kvvmanikanth/tomcat:1.0 .'
 
 		//for customimage build
-                sh "sudo docker build -t registry/dockerImage:${BUILD_NUMBER} ."
+                sh "sudo docker build -t $registry/$dockerImage:${BUILD_NUMBER} ."
 	       }
 	}
 	
