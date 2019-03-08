@@ -11,7 +11,7 @@ pipeline {
             steps {
                 echo '====== Running in Alpine ======'
                 sh 'cat /etc/os-release'
-                sh 'java -version'
+                sh 'echo "ubuntu"'
             }
         }
     }
