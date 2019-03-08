@@ -38,7 +38,7 @@ stages {
 
 	stage('BuildDockerImage'){
 		steps{
-			sh "sudo docker build -t 172.31.56.227:8083/tomcat:${GIT_SHA} ."
+			sh "sudo docker build -t 172.31.56.227:8083/tomcat:1.0 ."
 				       }
 	}
 	
