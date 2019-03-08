@@ -35,7 +35,7 @@ stages {
 
 	stage('BuildDockerImage'){
 		steps{
-		sh 'sudo docker build -t 172.31.56.227:8083/tomcat:1.0 .'
+		sh 'sudo docker build -t tomcat:0.1 .'
 	       }
 	}
 	
@@ -43,7 +43,8 @@ stages {
 	stage('PushToDockerHub'){
 		steps{
 		withDockerRegistry(credentialsId: '8c704737-f614-4dd2-b54f-2effd4d2f19e', url: '172.31.56.227:8083') {
-		sh "docker push 172.31.56.227:8083/tomcat:1.0"
+	        sh "docker tag tomcat:0.1 172.31.56.227:8083/tomcat:0.1"
+		sh "docker push 172.31.56.227:8083/tomcat:0.1"
                                 }
 	        }
 	   }
