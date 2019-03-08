@@ -54,14 +54,6 @@ stages {
 	stage('BuildDockerImage'){
 
 
-	//when branch is master then only the BuildDockerImage step will execute
-
-	     when {
-	        branch 'master'  
-      		  }
-
-
-
 
 		//Dockerfile Jenknsfile, source code, pom.xml should be in same location. Add jenkinsuser to docker & root group, restart jenkins and docker service
 
@@ -83,7 +75,7 @@ stages {
 	//deleting the docker image in the server after building and publishing done
 
  		 steps{
-   		       sh "docker rmi $registry:$BUILD_NUMBER"
+   		       sh "docker rmi $registry/$dockerImage:$BUILD_NUMBER"
  		      }
 		}
 	   }
