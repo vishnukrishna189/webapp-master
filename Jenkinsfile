@@ -1,9 +1,9 @@
 pipeline{
 
-    environment {
-         registry = "172.31.56.227:8083"
-	 registryCredentails = "8c704737-f614-4dd2-b54f-2effd4d2f19e"
-                }
+  environment {
+  	registry = "172.31.56.227:8083"
+  	registryCredentials = "8c704737-f614-4dd2-b54f-2effd4d2f19e"
+	}
 	
 agent any
 
