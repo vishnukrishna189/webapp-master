@@ -1,17 +1,17 @@
 pipeline {
     agent { label 'master' }
     stages {
-        stage('Centos Build') {
+        stage('Alpine build') {
             agent {
                 docker {
                     label 'master'
-                    image 'centos:latest'
+                    image 'maven:3-alpine'
                 }
             }
             steps {
                 echo '====== Running in Alpine ======'
                 sh 'cat /etc/os-release'
-                sh 'java --version'
+                sh 'mvn --version'
             }
         }
     }
