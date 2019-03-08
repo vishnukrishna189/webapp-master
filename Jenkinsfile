@@ -38,7 +38,8 @@ stages {
 
 	stage('BuildDockerImage'){
 		steps{
-			sh 'sudo docker build -t 172.31.56.227:8083/tomcat:0.1 .'
+			sh 'sudo docker build -t tomcat:0.1 .'
+			sh 'docker tag tomcat:0.1 172.31.56.227:8083/tomcat:0.1'
 	       }
 	}
 	
@@ -46,7 +47,7 @@ stages {
 	stage('PushToDockerHub'){
 		steps{
 			script{
-				def customImage = docker.build("tomcat:0.1")
+				def customImage = docker.build("172.31.56.227:8083:tomcat:0.1")
 				customImage.push()
 		   	}
                     }
