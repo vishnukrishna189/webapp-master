@@ -35,7 +35,7 @@ stages {
 
 	stage('Publish'){
 		steps{
-		sh 'docker build -t kvvmanikanth/mvnapp:1.0'
+		sh 'docker build -t kvvmanikanth/mvnapp:1.0 .'
 	       }
 	}
 
