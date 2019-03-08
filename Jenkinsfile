@@ -35,7 +35,7 @@ stages {
 
 	stage('Publish'){
 		steps{
-		sh 'sudo docker build . -t kvvmanikanth/mvnapp:1.0 -f Dockerfile'
+		sh 'sudo docker build -t kvvmanikanth/tomcat:1.0 .'
 	       }
 	}
 
