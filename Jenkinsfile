@@ -42,7 +42,7 @@ stages {
 	
 	stage('PushToDockerHub'){
 		steps{
-		withDockerRegistry(credentialsId: '447776b0-8d84-42cb-9d27-3cfc6a9c31fe', url: 'https://cloud.docker.com') {
+		withDockerRegistry(credentialsId: 'c1d37db4-25c0-4aa8-bfde-7c29dd7cabcf') {
                  sh "docker push kvvmanikanth/tomcat:1.0"
                          }
                      }
