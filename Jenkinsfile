@@ -5,7 +5,7 @@ pipeline {
             agent {
                 docker {
                     label 'master'
-                    image 'ubuntu:17.0'
+                    image 'ubuntu:18.04'
                 }
             }
             steps {
