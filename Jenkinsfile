@@ -46,7 +46,7 @@ stages {
 	stage('PushToDockerHub'){
 		steps{
 			script{
-				def customImage = docker.build("tomcat:0.1:${env.BUILD_ID}")
+				def customImage = docker.build("tomcat:0.1")
 				customImage.push()
 		   	}
                     }
