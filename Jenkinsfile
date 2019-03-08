@@ -35,18 +35,7 @@ stages {
 
 	stage('Publish'){
 		steps{
-		nexusArtifactUploader artifacts: [
-			              [artifactId: 'mvn-hello-world', 
-				      classifier: '', 
-				      file: '/var/lib/jenkins/workspace/pipeline-1/target/mvn-hello-world.war', 
-				      type: 'war']], 
-			              credentialsId: '32deb8d8-eae9-4049-8019-48257716ec0c', 
-			              groupId: 'com.dev3l.hello_world',
-			              nexusUrl: 'ec2-35-172-146-52.compute-1.amazonaws.com:8081',
-			              nexusVersion: 'nexus3', 
-			              protocol: 'http', 
-			              repository: 'sample1', 
-			              version: '1.0-SNAPSHOT'
+		sh 'docker build -t kvvmanikanth/mvnapp:1.0'
 	       }
 	}
 
