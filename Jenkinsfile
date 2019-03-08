@@ -4,12 +4,12 @@ pipeline {
         stage('Debian build') {
             agent {
                 docker {
-                    label 'master'
+                    label 'JenkinsLabel'
                     image 'ubuntu:18.04'
                 }
             }
             steps {
-                echo '====== Running in Alpine ======'
+                echo '====== Running in UBUNTU ======'
                 sh 'cat /etc/os-release'
                 sh 'echo "ubuntu"'
             }
