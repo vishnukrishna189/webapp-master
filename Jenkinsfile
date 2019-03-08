@@ -1,6 +1,6 @@
 pipeline{
 
-agent {label 'linux'}
+agent any
        
        tools{
         jdk 'JAVA_HOME'
