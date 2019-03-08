@@ -1,10 +1,24 @@
+//CLONING, BUILDING, COPYING WAR INTO DOCKERFILE AND BUILDING DOCKER IMAGE AND PUSHING IT TO DOCKER REDISTRY
+
 pipeline{
 
-  
+
+//go to Declarative Directive Generator, add registry ip, copy the keyvalue from credentails of NexusDockerRegistry
+environment {
+	//for custom images
+  	registry = "172.31.56.227:8083"
+  	registryCredentials = "8c704737-f614-4dd2-b54f-2effd4d2f19e"
+        dockerImage = 'tomcat'
+	}
+
+
 agent any
+
 
 //agent {label 'linux'} if you want to run this project in jenkins slave,before that you have to configure jenkins slave node
        
+
+
        tools{
 
 	//WE HAVE DEFINED THE VALUES OF JAVA_HOME & m2_HOME IN GLOBAL TOOL CONFIGURATION
@@ -14,7 +28,9 @@ agent any
        }
 
 
+
 stages {
+
 
 
        stage('GitClone') {
@@ -32,19 +48,44 @@ stages {
               }
        }
 
+
+
+
 	stage('BuildDockerImage'){
+
+
+	//when branch is master then only the BuildDockerImage step will execute
+
+	     when {
+	        branch 'master'  
+      		  }
+
+
+
+
+		//Dockerfile Jenknsfile, source code, pom.xml should be in same location. Add jenkinsuser to docker & root 
+                 group, restart jenkins and docker service
+
+
 		steps{
-			sh "sudo docker build -t 172.31.56.227:8083/tomcat:1.0 ."
-				       }
+		sh 'sudo docker build -t kvvmanikanth/tomcat:1.0 .'
+
+		//for customimage build
+                sh "sudo docker build -t registry/dockerImage:${BUILD_NUMBER} ."
+	       }
 	}
 	
+
 	
-	stage('PushToDockerHub'){
-		steps{
-	withDockerRegistry(credentialsId: '8c704737-f614-4dd2-b54f-2effd4d2f19e', url: '172.31.56.227:8083') {
-          sh 'docker push 172.31.56.227:8083/tomcat:1.0'
-                         }
-                       }
-                    }
-	        }
+	
+
+        stage('Remove Unused docker image') {
+
+	//deleting the docker image in the server after building and publishing done
+
+ 		 steps{
+   		       sh "docker rmi $registry:$BUILD_NUMBER"
+ 		      }
+		}
 	   }
+      }
