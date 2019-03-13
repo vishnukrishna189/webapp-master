@@ -83,8 +83,8 @@ stages {
 		
 		steps{
 			sshagent(['a5842a20-3293-4d56-a91f-3c4b9b731d56']) {
-				sh "ssh -o StrictHostKeyChecking=no root@172.31.125.246"
-                sh "kubectl --kubeconfig ~ubuntu/.kube/config create -f /k8/tomcat.yml "
+				sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.125.246"
+                sh "kubectl --kubeconfig /home/ubuntu/.kube/config create -f /k8/tomcat.yml "
                         }
 		    }
                 }
