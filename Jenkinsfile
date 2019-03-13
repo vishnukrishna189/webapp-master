@@ -80,8 +80,11 @@ stages {
 		//from pipeline syntax choose withDockerRegistry and add docker credentails and url
 		
 		steps{
+			sshagent(['7912ab65-9bc0-4f47-93a7-4aea4b30fd2f']) {
+				sh "ssh -o StrictHostKeyChecking=no root@172.31.125.246"
                 sh "kubectl --kubeconfig ~root/.kube/config create -f /k8/tomcat.yml "
                         }
+		    }
                 }
 
 
