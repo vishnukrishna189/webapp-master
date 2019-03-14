@@ -74,7 +74,7 @@ stages {
 		
 		steps{
 							
-                                    sh "kubectl create -f /k8/tomcat.yml "
+                                   // sh "kubectl create -f /k8/tomcat.yml "
                                   
 				  }
                 }
