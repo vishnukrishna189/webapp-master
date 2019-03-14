@@ -7,7 +7,7 @@ pipeline{
 environment {
 
 	//for custom image
-  	registryCredentials = "1a08b3ad-bd11-4c5f-ac65-d5196900cc4c"
+  	registryCredentials = "b0f869e6-eaaf-49de-9737-204b0faa655e"
         dockerImage = 'tomcat'
 	}
 
@@ -82,27 +82,11 @@ stages {
 		//from pipeline syntax choose withDockerRegistry and add docker credentails and url
 		
 		steps{
-			sshagent(['a5842a20-3293-4d56-a91f-3c4b9b731d56']) {
-				sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.125.246"
-				withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: 'kubernetes-admin@kubernetes', credentialsId: '16909c9e-11cd-4312-9817-4a0c4960cf52', namespace: 'default', serverUrl: 'https://172.31.125.246:6443') {
-                                    sh "kubectl --kubeconfig ~ubuntu/.kube/config apply -f /k8/tomcat.yml "
-                                         }
-				
-              
-			} 
-		    }
+							
+                                    sh "kubectl --kubeconfig ~root/.kube/config apply -f /k8/tomcat.yml "
+                                  
+				  }
                 }
 
-
-
-
-        stage('Remove Unused docker image') {
-
-	//deleting the docker image in the server after building and publishing done
-
- 		 steps{
-   		       sh "docker rmi $registry/$dockerImage:$BUILD_NUMBER"
- 		      }
-		}
 	   }
       }
