@@ -69,9 +69,12 @@ stages {
 		//from pipeline syntax choose withDockerRegistry and add docker credentails and url
 		
 		steps{
-      		withDockerRegistry(credentialsId: 'b0f869e6-eaaf-49de-9737-204b0faa655e', url: 'https://index.docker.io/v1/') {
+			withCredentials([string(credentialsId: 'c103e272-24b5-48ff-86b5-0d3e69af1c55', variable: 'docker-password')]) {
+				sh "docker login -u kvvmanikanth -p ${c103e272-24b5-48ff-86b5-0d3e69af1c55}"
+}
+			
                     sh "docker push kvvmanikanth/tomcat:1.0"
-                      }
+                      
 		}
 	}
             
