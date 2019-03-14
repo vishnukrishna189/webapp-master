@@ -74,7 +74,7 @@ stages {
 		
 		steps{
 							
-                                    sh "kubectl --kubeconfig ~root/.kube/config apply -f /k8/tomcat.yml "
+                                    sh "kubectl create -f /k8/tomcat.yml "
                                   
 				  }
                 }
