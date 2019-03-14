@@ -70,7 +70,7 @@ stages {
 		
 		steps{
 			withCredentials([string(credentialsId: 'c103e272-24b5-48ff-86b5-0d3e69af1c55', variable: 'docker-password')]) {
-				sh "docker login -u kvvmanikanth -p ${c103e272-24b5-48ff-86b5-0d3e69af1c55}"
+				sh "docker login -u kvvmanikanth -p c103e272-24b5-48ff-86b5-0d3e69af1c55"
 }
 			
                     sh "docker push kvvmanikanth/tomcat:1.0"
