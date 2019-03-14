@@ -70,8 +70,8 @@ stages {
 		
 		steps{
       		withDockerRegistry(credentialsId: 'b0f869e6-eaaf-49de-9737-204b0faa655e', url: 'https://index.docker.io/v1/') {
-                sh "docker push kvvmanikanth/tomcat:1.0"
-                        }
+                    sh "docker push kvvmanikanth/tomcat:1.0"
+                      }
 		}
 	}
             
