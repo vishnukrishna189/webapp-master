@@ -64,17 +64,7 @@ stages {
 	
 
 	
-	stage('PushToDockerHub'){
-
-		//from pipeline syntax choose withDockerRegistry and add docker credentails and url
-		
-		steps{
-			withCredentials([usernameColonPassword(credentialsId: 'b0f869e6-eaaf-49de-9737-204b0faa655e', variable: 'DOCKERHUBREPO!')]) {
-    sh "docker push kvvmanikanth/tomcat:1.0"
-}
-                      
-		}
-	}
+	
             
             
             
