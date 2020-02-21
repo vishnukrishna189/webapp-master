@@ -50,7 +50,7 @@ stages {
 				      type: 'war']], 
 			              credentialsId: '6549c800-3ca8-4dba-8146-0fe14f119037', 
 			              groupId: 'com.dev3l.hello_world',
-			              nexusUrl: 'vis5.com:8081',
+			              nexusUrl: '192.168.96.142:8081',
 			              nexusVersion: 'nexus3', 
 			              protocol: 'http', 
 			              repository: 'sample', 
