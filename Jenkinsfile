@@ -1,25 +1,13 @@
-pipeline{
+pipeline {
 
-
-//go to Declarative Directive Generator, add registry ip, copy the keyvalue from credentails of NexusDockerRegistry
-
-
-environment {
-
-	//for custom image
-  	registryCredentials = "b0f869e6-eaaf-49de-9737-204b0faa655e"
-        dockerImage = 'tomcat'
-	}
 
 
 agent any
 
-
 //agent {label 'linux'} if you want to run this project in jenkins slave,before that you have to configure jenkins slave node
        
 
-
-       tools{
+       tools {
 
 	//WE HAVE DEFINED THE VALUES OF JAVA_HOME & m2_HOME IN GLOBAL TOOL CONFIGURATION
 
@@ -27,22 +15,20 @@ agent any
         maven 'M2_HOME'      
        }
 
-
-
 stages {
 
 
 
        stage('GitClone') {
             steps {
-                git 'https://github.com/kvvmanikanth/webapp-master'
+                git 'https://github.com/vishnukrishna189/webapp-master.git'
                   }
             }
 
 
 
-       stage('MavenBuild'){
-              steps{
+       stage('MavenBuild') {
+              steps {
                   sh "mvn --version"
                   sh "mvn clean install"
               }
@@ -50,34 +36,26 @@ stages {
 
 
 
+//      stage('Publish') {
+  //           steps {
 
-	stage('BuildDockerImage'){
+		//we installed nexus artifactoryplugin, then checkin snipet generator for nexus,enter the details & click on
+                   //snippet generator
 
 
-		//Dockerfile Jenknsfile, source code, pom.xml should be in same location. Add jenkinsuser to docker & root group, restart jenkins and docker service
-
-
-		steps{
-	           sh "sudo docker build -t kvvmanikanth/tomcat:1.0 ."
-	       }
-	}
-	
-
-	
-	
-            
-            
-            
-            	stage('DeploToK8'){
-
-		//from pipeline syntax choose withDockerRegistry and add docker credentails and url
-		
-		steps{
-							
-                                   sh "kubectl create -f /k8/tomcat.yml "
-                                  
-				  }
-                }
-
-	   }
-      }
+    //            nexusArtifactUploader artifacts: [
+	//		              [artifactId: 'mvn-hello-world', 
+	//			      classifier: '', 
+	//			      file: '/var/lib/jenkins/workspace/nexus/target/my-app-1.0-SNAPSHOT.jar', 
+	//			      type: 'war']], 
+	//		              credentialsId: '6549c800-3ca8-4dba-8146-0fe14f119037', 
+	//		              groupId: 'com.dev3l.hello_world',
+	//		              nexusUrl: 'vis5.com/8081',
+	//		              nexusVersion: 'nexus3', 
+	//		              protocol: 'http', 
+	//		              repository: 'sample-repo', 
+	//		              version: '1.0-SNAPSHOT'
+	     }
+      } 
+}
+}
