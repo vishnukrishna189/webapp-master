@@ -55,7 +55,7 @@ stages {
 	//		              protocol: 'http', 
 	//		              repository: 'sample-repo', 
 	//		              version: '1.0-SNAPSHOT'
-	     }
-      } 
+//	     }
+ //     } 
 }
 }
