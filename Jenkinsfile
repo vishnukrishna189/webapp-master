@@ -57,5 +57,13 @@ stages {
 			              version: '1.0-SNAPSHOT'
 	     }
       } 
+	
+	stage('Deploy'){
+      steps{
+             sshagent(['RemoteCopy']) {
+                   sh "scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/nexus/target/*.war vishnu@vis8.com:/usr/share/tomcat/webapps/mvn-hello-world.war"
+    } 
+  }
+}
 }
 }
