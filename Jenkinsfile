@@ -60,7 +60,7 @@ stages {
 	
 	stage('Deploy'){
       steps{
-             sshagent (credentials: ['fe70868e-68b1-438d-aa45-9b6d4a0e31cc']) {
+             sshagent (['fe70868e-68b1-438d-aa45-9b6d4a0e31cc']) {
                    sh "scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/nexus/target/*.war vishnu@vis8.com:/usr/share/tomcat/webapps/mvn-hello-world-1.0-SNAPSHOT.war"
     } 
   }
